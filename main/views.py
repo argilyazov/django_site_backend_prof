@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from .models import Article
 
 def index(request):
-    return render(request,'main/index.html')
+    art= Article.objects.all()[0]
+    return render(request,'main/index.html',{"article":art.text})
 
 
 def demand(request):
