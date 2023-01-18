@@ -6,5 +6,32 @@
     nav-link active
 {% endblock %}
 {% block content %}
-<h1>Востребованность</h1>
+    <h1 style="text-align:  center">Статистика по годам</h1>
+    <br>
+    <img style="height: 400px;" src="/media/images/demand.png" alt="demand.png" align="middle">
+    <br>
+    <br>
+    <br>
+    <table class="table table-bordered" align="center" width="1080" border="1" bordercolor="black" cellpadding="5px">
+        <thead align="center" class="table-primary">
+        <tr>
+            <th>Год</th>
+            <th>Средняя зарплата</th>
+            <th>Средняя зарплата - Backend-программист</th>
+            <th>Количество вакансий</th>
+            <th>Количество вакансий - Backend-программист</th>
+        </tr>
+        </thead>
+        <tbody align="center">
+        {% for stat in statistics_by_year %}
+            <tr>
+                <td>{{ stat.year }}</td>
+                <td>{{ stat.average_salary }}</td>
+                <td>{{ stat.average_salary_prof }}</td>
+                <td>{{ stat.count_salary }}</td>
+                <td>{{ stat.count_salary_prof }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

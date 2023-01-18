@@ -6,5 +6,53 @@
     nav-link active
 {% endblock %}
 {% block content %}
-<h1>География</h1>
+<h1 style="text-align:  center">Статистика по городам</h1>
+    <br>
+    <img style="height: 350px;" src="/media/images/geography.png" alt="geography.png" align="middle">
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <table class="table table-bordered" align="center" width=500" border="1" bordercolor="black"
+                       cellpadding="5px">
+
+                    <thead align="center" class="table-primary">
+                    <tr>
+                        <th>Город</th>
+                        <th>Уровень зарплат</th>
+                    </tr>
+                    </thead>
+                    <tbody align="center">
+                    {% for stat in statistics_by_city_salary %}
+                        <tr>
+                            <td>{{ stat.city }}</td>
+                            <td>{{ stat.salary_level }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                <table class="table table-bordered" align="center" width="500" border="1" bordercolor="black"
+                       cellpadding="5px">
+                    <thead align="center" class="table-primary">
+                    <tr>
+                        <th>Город</th>
+                        <th>Доля вакансий</th>
+                    </tr>
+                    </thead>
+                    <tbody align="center">
+                    {% for stat in statistics_by_city_count %}
+                        <tr>
+                            <td>{{ stat.city }}</td>
+                            <td>{{ stat.salary_count }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 {% endblock %}
