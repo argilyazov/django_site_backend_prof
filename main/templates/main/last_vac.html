@@ -30,7 +30,9 @@
                 <p><strong>Оклад</strong></p>
 
                 {% if vacancy.salary %}
-                    {% if vacancy.salary.from %}От {{ vacancy.salary.from }}{% endif %} {% if vacancy.salary.to %}{% if vacancy.salary.from %}до {{ vacancy.salary.to }}{% else %}До {{ vacancy.salary.to }}{%endif%}{% endif %}
+                    {% if vacancy.salary.from %}От {{ vacancy.salary.from }}{% endif %}
+                    {% if vacancy.salary.to %}{% if vacancy.salary.from %}до {{ vacancy.salary.to }}{% else %}До
+                        {{ vacancy.salary.to }}{% endif %}{% endif %}
                     {{ vacancy.salary.currency }}
                 {% else %}
                     Нет данных
@@ -44,7 +46,7 @@
                 <br>
                 <p><strong>Дата публикации</strong></p>
 
-                {{ vacancy.published_at }}
+                {{ vacancy.published_at|slice:":10" }}
                 </p>
                 <a href={{ vacancy.alternate_url }} class="btn btn-primary btn-sm">Перейти к вакансии</a>
             </div>

@@ -6,5 +6,9 @@
     nav-link active
 {% endblock %}
 {% block content %}
-{{ article.text|safe }}
+    {% if article.text %}
+        {{ article.text|safe }}
+    {% else %}
+        <p>Статей нет</p>
+    {% endif %}
 {% endblock %}

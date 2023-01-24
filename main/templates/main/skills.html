@@ -6,5 +6,36 @@
     nav-link active
 {% endblock %}
 {% block content %}
-<h1>Навыки</h1>
+    <h1 style="text-align:  center">Навыки</h1>
+    {% regroup statistic by year as stat_list %}
+    {% for stat in stat_list %}
+        <br>
+        <img style="height: 400px; padding-left: 200px" src="/media/images/{{ stat.grouper }}.jpg"
+             alt="{{ stat.grouper }}.jpg">
+        <br>
+        <br>
+        <br>
+        <table class="table table-bordered" align="center" width="1080" border="1" bordercolor="black"
+               cellpadding="5px">
+            <thead align="center" class="table-primary">
+            <tr>
+                <th colspan="2">{{ stat.grouper }}</th>
+            </tr>
+            <tr>
+                <th>Навык</th>
+                <th>Количество упоминаний</th>
+            </tr>
+            </thead>
+            <tbody align="center">
+            {% for skills in stat.list %}
+
+                <tr>
+                    <td>{{ skills.skill }}</td>
+                    <td>{{ skills.count }}</td>
+                </tr>
+
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
 {% endblock %}

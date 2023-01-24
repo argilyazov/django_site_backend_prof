@@ -3,6 +3,8 @@ from .models import Statistic_by_year
 from .models import Statistic_by_city_salary
 from .models import Statistic_by_city_count
 from .models import Article
+from .models import Skill_statistics
+from .models import Years
 import requests
 import json
 
@@ -32,7 +34,9 @@ def geography(request):
 
 
 def skills(request):
-    return render(request, 'main/skills.html')
+    years=Years.objects.all()
+    statistic = Skill_statistics.objects.all()
+    return render(request, 'main/skills.html',{'years':years, 'statistic':statistic})
 
 
 def last_vac(request):
